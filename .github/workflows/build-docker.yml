@@ -24,9 +24,9 @@ jobs:
 
     - name: APT update
       run: |
-        sudo apt update
-        sudo apt install binfmt-support
-        sudo apt install qemu qemu-user-static
+        sudo apt-get update
+        sudo apt-get install binfmt-support
+        sudo apt-get install qemu qemu-user-static
         sudo update-binfmts --enable
 
     # Build image with docker
