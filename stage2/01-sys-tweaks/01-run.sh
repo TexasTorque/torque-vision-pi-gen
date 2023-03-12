@@ -30,6 +30,12 @@ curl -sk "https://api.github.com/repos/photonvision/photonvision/releases/latest
     wget -qi - -O "${ROOTFS_DIR}/opt/photonvision/photonvision.jar"
 install -m 644 files/photonvision.service "${ROOTFS_DIR}/lib/systemd/system/"
 
+mkdir -p "${ROOTFS_DIR}/opt/torquevision"
+wget -q -O "${ROOTFS_DIR}/opt/torquevision/" https://github.com/ArduCAM/Arducam-Pivariety-V4L2-Driver/releases/download/libcamera-v0.0.5/libcamera-dev-0.0.12-bullseye-arm64.deb
+wget -q -O "${ROOTFS_DIR}/opt/torquevision/" https://github.com/ArduCAM/Arducam-Pivariety-V4L2-Driver/releases/download/libcamera-apps-v0.0.5/libcamera-apps-0.0.12-bullseye-arm64.deb
+dpkg -i "${ROOTFS_DIR}/opt/torquevision/libcamera-dev-0.0.12-bullseye-arm64.deb"
+dpkg -i "${ROOTFS_DIR}/opt/torquevision/libcamera-apps-0.0.12-bullseye-arm64.deb"
+
 install -m 644 files/set_focus.service "${ROOTFS_DIR}/lib/systemd/system/"
 
 on_chroot << EOF

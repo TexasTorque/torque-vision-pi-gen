@@ -66,6 +66,10 @@ max_framebuffers=2
 # Disable compensation for displays with overscan
 disable_overscan=1
 
+# Arducam
+dtoverlay=arducam-pivariety
+dtoverlay=imx519
+
 [cm4]
 # Enable host mode on the 2711 built-in XHCI USB controller.
 # This line should be removed if the legacy DWC2 controller is required

@@ -1,8 +1,8 @@
-IMG_NAME='PhotonVision'
+IMG_NAME='TorqueVision'
 TARGET_HOSTNAME=photonvision
 ENABLE_SSH=1
-PI_GEN=photon-pi-gen
-PI_GEN_REPO=https://github.com/photonvision/photon-pi-gen
+PI_GEN=torque-vision-pi-gen
+PI_GEN_REPO=https://github.com/TexasTorque/torque-vision-pi-gen
 LOCALE_DEFAULT=en_US.UTF-8
 DEPLOY_COMPRESSION="xz"
 KEYBOARD_KEYMAP=us

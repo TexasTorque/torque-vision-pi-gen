@@ -1,4 +1,4 @@
-IMG_NAME='PhotonVision'
+IMG_NAME='TorqueVision'
 TARGET_HOSTNAME=photonvision
 ENABLE_SSH=1
 LOCALE_DEFAULT=en_US.UTF-8
