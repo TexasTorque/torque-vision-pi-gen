@@ -3,7 +3,7 @@ Description=PhotonVision server
 
 [Service]
 WorkingDirectory=/opt/photonvision
-ExecStart=java -jar /opt/photonvision/photonvision.jar -Xmx512m
+ExecStart=java -jar /opt/photonvision/photonvision.jar
 Type=simple
 Restart=on-failure
 RestartSec=1

@@ -24,7 +24,7 @@ fi
 
 mkdir -p "${ROOTFS_DIR}/opt/photonvision"
 curl -sk "https://api.github.com/repos/photonvision/photonvision/releases/latest" | 
-    grep "browser_download_url.*jar" | 
+    grep "browser_download_url.*linuxarm64\.jar" | 
     cut -d : -f 2,3 | 
     tr -d '"' | 
     wget -qi - -O "${ROOTFS_DIR}/opt/photonvision/photonvision.jar"

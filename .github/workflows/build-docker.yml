@@ -4,7 +4,7 @@ name: build-docker
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [ master, arm64 ]
     tags: 
       - '*'
   pull_request:
@@ -24,9 +24,9 @@ jobs:
 
     - name: APT update
       run: |
-        sudo apt update
-        sudo apt install binfmt-support
-        sudo apt install qemu qemu-user-static
+        sudo apt-get update
+        sudo apt-get install binfmt-support
+        sudo apt-get install qemu qemu-user-static
         sudo update-binfmts --enable
 
     # Build image with docker
@@ -41,7 +41,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: built-image
-        path: ./deploy/image_*PhotonVision.img.xz
+        path: ./deploy/image_*PhotonVision*.img.xz
         if-no-files-found: error
 
     - name: Upload debug artifacts
@@ -49,20 +49,13 @@ jobs:
       with:
         name: debug-files
         path: | 
-          ./deploy/*PhotonVision.info
+          ./deploy/*PhotonVision*.info
           ./deploy/build.log
         if-no-files-found: error
-  
-  release:
-    if: startsWith(github.ref, 'refs/tags/')
-    needs: [build]
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/download-artifact@v2
-        with:
-          name: built-image
-      - uses: softprops/action-gh-release@v1
-        with:
-          files: '**/*'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: ./deploy/image_*PhotonVision*.img.xz
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
