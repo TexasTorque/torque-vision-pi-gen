@@ -41,7 +41,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: built-image
-        path: ./deploy/image_*PhotonVision*.img.xz
+        path: ./deploy/image_*TorqueVision*.img.xz
         if-no-files-found: error
 
     - name: Upload debug artifacts
@@ -49,13 +49,13 @@ jobs:
       with:
         name: debug-files
         path: | 
-          ./deploy/*PhotonVision*.info
+          ./deploy/*TorqueVision*.info
           ./deploy/build.log
         if-no-files-found: error
 
     - uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: ./deploy/image_*PhotonVision*.img.xz
+        files: ./deploy/image_*TorqueVision*.img.xz
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
