@@ -2,12 +2,11 @@
 
 install -m 644 files/set_focus.service "${ROOTFS_DIR}/lib/systemd/system/"
 
-mkdir -p "${ROOTFS_DIR}/opt/torquevision"
-wget -q https://github.com/ArduCAM/Arducam-Pivariety-V4L2-Driver/releases/download/libcamera-v0.0.5/libcamera-dev-0.0.12-bullseye-arm64.deb -O "${ROOTFS_DIR}/opt/torquevision/libcamera-dev-0.0.12-bullseye-arm64.deb"
-wget -q https://github.com/ArduCAM/Arducam-Pivariety-V4L2-Driver/releases/download/libcamera-apps-v0.0.5/libcamera-apps-0.0.12-bullseye-arm64.deb -O "${ROOTFS_DIR}/opt/torquevision/libcamera-apps-0.0.12-bullseye-arm64.deb"
-
 on_chroot << EOF
 systemctl enable set_focus
+mkdir -p "${ROOTFS_DIR}/opt/torquevision"
+wget https://github.com/ArduCAM/Arducam-Pivariety-V4L2-Driver/releases/download/libcamera-v0.0.5/libcamera-dev-0.0.12-bullseye-arm64.deb -O "${ROOTFS_DIR}/opt/torquevision/libcamera-dev-0.0.12-bullseye-arm64.deb"
+wget https://github.com/ArduCAM/Arducam-Pivariety-V4L2-Driver/releases/download/libcamera-apps-v0.0.5/libcamera-apps-0.0.12-bullseye-arm64.deb -O "${ROOTFS_DIR}/opt/torquevision/libcamera-apps-0.0.12-bullseye-arm64.deb"
 dpkg -i "${ROOTFS_DIR}/opt/torquevision/libcamera-dev-0.0.12-bullseye-arm64.deb"
 dpkg -i "${ROOTFS_DIR}/opt/torquevision/libcamera-apps-0.0.12-bullseye-arm64.deb"
 ln -s "${ROOTFS_DIR}/usr/lib/aarch64-linux-gnu/libcamera.so.0.0.4" "${ROOTFS_DIR}/usr/lib/aarch64-linux-gnu/libcamera.so.0.0.3"
