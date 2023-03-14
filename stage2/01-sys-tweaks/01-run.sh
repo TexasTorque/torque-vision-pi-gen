@@ -23,7 +23,7 @@ s/^#?[[:blank:]]*PasswordAuthentication[[:blank:]]*yes[[:blank:]]*$/PasswordAuth
 fi
 
 mkdir -p "${ROOTFS_DIR}/opt/photonvision"
-curl -sk "https://api.github.com/repos/photonvision/photonvision/releases/latest" | 
+curl -sk "https://api.github.com/repos/texastorque/photonvision/releases/latest" | 
     grep "browser_download_url.*linuxarm64\.jar" | 
     cut -d : -f 2,3 | 
     tr -d '"' | 
