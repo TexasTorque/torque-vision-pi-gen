@@ -1,6 +1,6 @@
 # Automatically load overlays for detected DSI displays/cameras
 display_auto_detect=1
-camera_auto_detect=1
+#camera_auto_detect=1
 
 # Enable DRM VC4 V3D driver
 #dtoverlay=vc4-kms-v3d
@@ -13,7 +13,6 @@ arm_64bit=1
 disable_overscan=1
 
 # Arducam
-dtoverlay=arducam-pivariety
 dtoverlay=imx519
 
 [cm4]
@@ -46,3 +45,4 @@ arm_boost=1
 
 ##############################################################
 
+dtparam=i2c_arm=on
