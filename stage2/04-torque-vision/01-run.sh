@@ -14,14 +14,13 @@ dpkg -i "${ROOTFS_DIR}/opt/torquevision/libcamera-apps-0.0.12-bullseye-arm64.deb
 apt-get -f install
 wget -O install_pivariety_pkgs.sh https://github.com/ArduCAM/Arducam-Pivariety-V4L2-Driver/releases/download/install_script/install_pivariety_pkgs.sh
 chmod +x install_pivariety_pkgs.sh
-uname()
-  if [ "$#" -eq 1 ] && [ "$1" = -r ]; then
-    echo "5.15.84-v8+"
-  else
-    command uname "$@"
-  fi
 
-export -f uname
-./install_pivariety_pkgs.sh -p imx519_kernel_driver
+wget https://github.com/ArduCAM/Arducam-Pivariety-V4L2-Driver/releases/download/Arducam_pivariety_v4l2_v1.0/imx519_kernel_driver_5.15.84.tar.gz -O "${ROOTFS_DIR}/opt/torquevision/imx519_kernel_driver_5.15.84.tar.gz"
+tar -zxvf "${ROOTFS_DIR}/opt/torquevision/imx519_kernel_driver_5.15.84.tar.gz" -C "${ROOTFS_DIR}/opt/torquevision/"
+install -p -m 755 "${ROOTFS_DIR}/opt/torquevision/Release/arducam_camera_selector.sh" /usr/bin/
+install -p -m 644 "${ROOTFS_DIR}/opt/torquevision/Release/bin/5.15.84-v8+/ak7375.ko.xz" "/lib/modules/5.15.84-v8+/kernel/drivers/media/i2c/"
+install -p -m 644 "${ROOTFS_DIR}/opt/torquevision/Release/bin/5.15.84-v8+/imx519.ko.xz" "/lib/modules/5.15.84-v8+/kernel/drivers/media/i2c/"
+install -p -m 644 "${ROOTFS_DIR}/opt/torquevision/Release/bin/5.15.84-v8+/imx519.dtbo" /boot/overlays/
+/sbin/depmod -a
 EOF
 
