@@ -21,6 +21,6 @@ install -p -m 755 "${ROOTFS_DIR}/opt/torquevision/Release/arducam_camera_selecto
 install -p -m 644 "${ROOTFS_DIR}/opt/torquevision/Release/bin/5.15.84-v8+/ak7375.ko.xz" "/lib/modules/5.15.84-v8+/kernel/drivers/media/i2c/"
 install -p -m 644 "${ROOTFS_DIR}/opt/torquevision/Release/bin/5.15.84-v8+/imx519.ko.xz" "/lib/modules/5.15.84-v8+/kernel/drivers/media/i2c/"
 install -p -m 644 "${ROOTFS_DIR}/opt/torquevision/Release/bin/5.15.84-v8+/imx519.dtbo" /boot/overlays/
-/sbin/depmod -a
+/sbin/depmod -a 5.15.84-v8+
 EOF
 
